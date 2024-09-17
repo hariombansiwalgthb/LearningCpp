@@ -1,0 +1,44 @@
+#include <iostream>
+#include <numeric>
+
+int binary_search(int arr[], int size, int key)
+{
+	int start{}, end{size-1}, mid{};
+	while(start<=end)
+	{
+		//mid = std::midpoint(start, end);
+		mid = start + (end - start) / 2; //airthmetic mean
+		if(arr[mid] == key)
+		{
+			return mid;
+		}
+		else if(arr[mid>key])
+		{
+			end = mid - 1;
+		}
+		else
+		{
+			start = mid + 1;
+		}
+
+	}	
+	return -1;
+}
+
+int main()
+{
+	int iArr[]{1,2,3,4,5,6,7,8,9};
+	int size = sizeof(iArr) / sizeof(int);
+	int key{};
+	std::cout<<"please enter key to find via binary search"<<std::endl;
+	std::cin >> key;
+	int index{ binary_search(iArr, size, key)};
+	if(index != -1)
+	{
+		std::cout << "Key found at index: " << index << std::endl;
+	}
+	else
+	{
+		std::cout << "Key not found " << std::endl;
+	}
+}
